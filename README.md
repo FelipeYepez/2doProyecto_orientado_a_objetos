@@ -9,3 +9,5 @@ Clase Reserva permite crear reservas que serán construidas dentro de clase Hote
 
 Clase Habitaciones es clase padre y hereda 4 clases: Individual, Doble, Triple y Suite cada una con sus propios atributos y métodos. 
 Se construye desde clase Hotel.
+
+El proyecto dejaría de funcionar para habitaciones distintas a las creadas o en el dado caso de que cuenten con más atributos de los especificados.
