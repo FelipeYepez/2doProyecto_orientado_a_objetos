@@ -27,7 +27,7 @@ public:
         balcon = bal;
     }
     string get_balcon();
-    string arreglo_t();
+    string arreglo();
 };
 //metodo para saber si cuenta o no con balcon
 string Triple::get_balcon()
@@ -40,7 +40,7 @@ string Triple::get_balcon()
     else
         return resp = "No";
 }
-string Triple::arreglo_t()
+string Triple::arreglo()
 {
     stringstream hab;
     hab << "\n Habitacion # " << get_numero() << "\n Tipo: " << get_cama() << "\n Costo por noche: $" << get_costonoche()

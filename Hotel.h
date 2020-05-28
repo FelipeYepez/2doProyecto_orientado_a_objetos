@@ -24,10 +24,10 @@ class Hotel
     //atributos privados
 private:
     Reserva reser[100];
-    Habitaciones habit_i[50];
-    Habitaciones habit_d[50];
-    Habitaciones habit_t[50];
-    Habitaciones habit_s[50];
+    Habitaciones *habit_i[50];
+    Habitaciones *habit_d[50];
+    Habitaciones *habit_t[50];
+    Habitaciones *habit_s[50];
     int cont_res = 0;
     int cont_hab_i = 0;
     int cont_hab_d = 0;
@@ -62,7 +62,7 @@ public:
     void agrega_habitacion_dob(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal);
     void agrega_habitacion_triple(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal);
     void agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal, bool sal, bool com);  //sobrecarga
-    void agrega_reserva(int a, int n, string fi, string fs, string tipohabres);
+    void agrega_reserva(string nom, int a, int n, string fi, string fs, string tipohabres);
 };
 //constructor vacio
 Hotel::Hotel()
@@ -143,87 +143,94 @@ void Hotel::muestra_hotel()
          << "\n Numero de habitaciones: " << cant_habitaciones << "\n Cuenta con desayuno: " <<  get_desayuno()
          << "\n Cuenta con parqueo: " <<  get_parqueo() << "\n Cuenta con wi-fi: " <<  get_wifi() <<  "\n" <<  "\n";
     cout << h.str();
+    //Desplegar habitaciones y reservas hechas con composicion dentro del hotel
     muestra_habitaciones();
     muestra_reservas();
+    //limpia heap para que no quede basura
+    delete(habit_i[50]);
+    delete(habit_d[50]);
+    delete(habit_t[50]);
+    delete(habit_s[50]);
 }
 
 // composicion que llama constructor de clase para crearla dentro de hotel
 void Hotel::agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc)
 {
-    Individual indiv(num, cam, cn, tv, cf, micro, frigo, esc);
-    habit_i[cont_hab_i] = indiv;
+    habit_i[cont_hab_i] = new Individual(num, cam, cn, tv, cf, micro, frigo, esc);
     cont_hab_i += 1;
 }
 // composicion que llama constructor de clase para crearla dentro de hotel
 void Hotel::agrega_habitacion_dob(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal)
 {
-    Doble dob(num, cam, cn, tv, cf, micro, frigo, esc, bal);
-    habit_d[cont_hab_d] = dob;
+    habit_d[cont_hab_d] = new Doble(num, cam, cn, tv, cf, micro, frigo, esc, bal);
     cont_hab_d += 1;
 }
 // composicion que llama constructor de clase para crearla dentro de hotel
 void Hotel::agrega_habitacion_triple(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal)
 {
-    Triple trip(num, cam, cn, tv, cf, micro, frigo, esc, bal);
-    habit_t[cont_hab_t] = trip;
+    habit_t[cont_hab_t] = new Triple(num, cam, cn, tv, cf, micro, frigo, esc, bal);
     cont_hab_t += 1;
 }
 // composicion que llama constructor de clase para crearla dentro de hotel
 void Hotel::agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal, bool sal, bool com)
 {
-    Suite sui(num, cam, cn, tv, cf, micro, frigo, esc, bal, sal, com);
-    habit_s[cont_hab_s] = sui;
+    habit_s[cont_hab_s] = new Suite(num, cam, cn, tv, cf, micro, frigo, esc, bal, sal, com);
     cont_hab_s += 1;
 }
 // composicion que llama constructor de clase para crearla dentro de hotel
-void Hotel::agrega_reserva(int a, int n, string fi, string fs, string tipohabres)
+void Hotel::agrega_reserva(string nom, int a, int n, string fi, string fs, string tipohabres)
 {
-    Reserva reserv(a, n, fi, fs, tipohabres);
+    Reserva reserv(nom, a, n, fi, fs, tipohabres);
     reser[cont_res] = reserv;
     cont_res += 1;
 }
+//Ciclo que recorre el arreglo e imprime cada objeto.
 //funcion que permite desplegar las reservas creadas a traves de composicion
 void Hotel::muestra_reservas()
 {
-    cout << "RESERVAS: \n";
+    cout << "\n \n" << "\t\t" << "RESERVAS: \n";
     for(int i=0; i<cont_res; i++)
     {
         cout << "\t\t" << reser[i].arreglo();
     }
 }
+//Ciclo que recorre el arreglo e imprime cada objeto.
 //funcion que permite desplegar las habitaciones creadas a traves de composicion
 void Hotel::muestra_habitaciones()
 {
+
     if (cont_hab_i > 0)
     {
-        cout << "HABITACIONES INDIVIDUALES: \n";
+        cout << "\n \n" << "\t\t" << "HABITACIONES INDIVIDUALES: \n";
+        //Habitaciones * hab = new Individual();
+        //arreglo = hab -> arreglo();
         for(int i=0; i<cont_hab_i; i++)
         {
-            cout << "\t\t" << habit_i[i].arreglo();
+            cout << "\t\t" << habit_i[i] -> arreglo(); //aplicacion de polimorfismo con apuntadores
         }
     }
     if (cont_hab_d > 0)
     {
-        cout << "HABITACIONES DOBLES: \n";
+        cout << "\n \n" << "\t\t" << "HABITACIONES DOBLES: \n";
         for(int i=0; i<cont_hab_d; i++)
         {
-            cout << "\t\t" << habit_d[i].arreglo();
+            cout << "\t\t" << habit_d[i] -> arreglo(); //aplicacion de polimorfismo con apuntadores
         }
     }
     if (cont_hab_t > 0)
     {
-        cout << "HABITACIONES TRIPLES: \n";
+        cout << "\n \n" << "\t\t" << "HABITACIONES TRIPLES: \n";
         for(int i=0; i<cont_hab_t; i++)
         {
-            cout << "\t\t" << habit_t[i].arreglo();
+            cout << "\t\t" << habit_t[i] -> arreglo(); //aplicacion de polimorfismo con apuntadores
         }
     }
     if (cont_hab_s > 0)
     {
-        cout << "SUITES: \n";
+        cout << "\n \n" << "\t\t" << "SUITES: \n";
         for(int i=0; i<cont_hab_s; i++)
         {
-            cout << "\t\t" << habit_s[i].arreglo();
+            cout << "\t\t" << habit_s[i] -> arreglo(); //aplicacion de polimorfismo con apuntadores
         }
     }
 }

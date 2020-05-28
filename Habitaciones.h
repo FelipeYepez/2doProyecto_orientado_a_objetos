@@ -13,11 +13,11 @@ Clase de composicion a Hotel y clase padre que dar[a herencia a 4 clases mas
 
 using namespace std;
 
-
+//clase abstracta
 class Habitaciones
 {
 //atributos privados
-private:
+protected:
     int numero;
     string cama;
     float costo_noche;
@@ -41,7 +41,7 @@ public:
     string get_microondas();
     string get_frigobar();
     string get_escritorio();
-    string arreglo();
+    virtual string arreglo() = 0; //metodo abstracto que sera sobreescrito
 };
 //constructor vacio
 Habitaciones::Habitaciones()

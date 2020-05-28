@@ -17,6 +17,7 @@ class Reserva
 {
 private:
     //atributos privados
+    string nombre_cliente;
     int adultos;
     int ninos;
     string fecha_ingreso;
@@ -27,7 +28,8 @@ public:
     //metodos publicos
     //no hacen falta setters ya que se hace la reserva una sola vez sin modificaciones
     Reserva(); //constructor
-    Reserva(int a, int n, string fi, string fs, string tipohabres);
+    Reserva(string nom, int a, int n, string fi, string fs, string tipohabres);
+    string get_cliente();
     int get_adultos();
     int get_ninos();
     string get_fechai();
@@ -39,7 +41,7 @@ public:
 //Constructor vacio
 Reserva::Reserva()
 {
-
+    nombre_cliente = "";
     adultos = 0;
     ninos = 0;
     fecha_ingreso = "";
@@ -47,9 +49,9 @@ Reserva::Reserva()
     tipo_habitacion_reserva = "";
 }
 //Constructor
-Reserva::Reserva(int a, int n, string fi, string fs, string tipohabres)
+Reserva::Reserva(string nom, int a, int n, string fi, string fs, string tipohabres)
 {
-
+    nombre_cliente = nom;
     adultos = a;
     ninos = n;
     fecha_ingreso = fi;
@@ -57,6 +59,11 @@ Reserva::Reserva(int a, int n, string fi, string fs, string tipohabres)
     tipo_habitacion_reserva = tipohabres;
 }
 //metodos de las clases para poder obtener, modificar o ver el estado de la informacion que tienen sus atributos privados
+string Reserva::get_cliente()
+{
+    return nombre_cliente;
+}
+
 int Reserva::get_adultos()
 {
     return  adultos;
@@ -81,11 +88,12 @@ string Reserva::get_tipo_habitacion_r()
 {
     return  tipo_habitacion_reserva;
 }
-//funcion que permite almacenar las distintas reservaciones que se van haciendo para poder desplegarlas
+
+//funcion que permite arreglo de reservas para posteriormente almacenar y desplegar cuando sea necesario
 string Reserva::arreglo()
 {
     stringstream res;
-    res << "\n Numero de adultos: " << adultos << "\n Numero de ninos: " << ninos
+    res << "\n Reserva a nombre de: " << nombre_cliente << "\n Numero de adultos: " << adultos << "\n Numero de ninos: " << ninos
          << "\n Fecha de ingreso " <<  fecha_ingreso << "\n Fecha de salida: "
          <<  fecha_salida << "\n Tipo de habitacion: " <<  tipo_habitacion_reserva <<  "\n" <<  "\n";
     return res.str();

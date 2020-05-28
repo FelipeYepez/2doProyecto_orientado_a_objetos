@@ -21,6 +21,18 @@ public:
     Individual(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc):Habitaciones(num, cam, cn, tv, cf, micro, frigo, esc)
     {
     }
+    string arreglo();
 };
+
+string Individual::arreglo()
+{
+    stringstream hab;
+    hab << "\n Habitacion # " << numero << "\n Tipo: " << cama << "\n Costo por noche: $" << costo_noche
+         << "\n Cuenta con television " <<  get_television() << "\n Cuenta con caja fuerte: "
+         <<  get_cajafuerte() << "\n Cuenta con microondas " <<  get_microondas() << "\n Cuenta con caja frigobar: "
+         <<  get_frigobar() << "\n Cuenta con caja escritorio: " <<  get_escritorio()
+         << "\n" <<  "\n";
+    return hab.str();
+}
 
 #endif // INDIVIDUAL_H

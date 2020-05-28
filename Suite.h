@@ -33,6 +33,7 @@ public:
     string get_balcon();
     string get_sala();
     string get_comedor();
+    string arreglo();
 };
 //metodos para saber si cuenta o no con distintos atributos
 string Suite::get_balcon()
@@ -66,6 +67,18 @@ string Suite::get_comedor()
 
     else
         return resp = "No";
+}
+
+string Suite::arreglo()
+{
+    stringstream hab;
+    hab << "\n Habitacion # " << get_numero() << "\n Tipo: " << get_cama() << "\n Costo por noche: $" << get_costonoche()
+         << "\n Cuenta con television " <<  get_television() << "\n Cuenta con caja fuerte: "
+         <<  get_cajafuerte() << "\n Cuenta con microondas " <<  get_microondas() << "\n Cuenta con caja frigobar: "
+         <<  get_frigobar() << "\n Cuenta con caja escritorio: " <<  get_escritorio() << "\n Cuenta con balcon: "
+         <<  get_balcon() << "\n Cuenta con sala: " <<  get_sala() << "\n Cuenta con comedor: " <<  get_comedor()
+         << "\n" <<  "\n";
+    return hab.str();
 }
 
 #endif // SUITE_H
