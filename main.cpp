@@ -8,9 +8,9 @@ poder manejar adecuadamente el hotel.
 */
 
 #include <iostream>
-#include <Hotel.h>
-#include <Habitaciones.h>
-#include <Reserva.h>
+#include "Hotel.h"
+#include "Habitaciones.h"
+#include "Reserva.h"
 
 using namespace std;
 

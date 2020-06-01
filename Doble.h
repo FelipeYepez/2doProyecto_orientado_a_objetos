@@ -8,7 +8,7 @@ Este clase sera parte de la agregacion a hotel
 #ifndef DOBLE_H
 #define DOBLE_H
 
-#include <Habitaciones.h>
+#include "Habitaciones.h"
 #include <iostream>
 
 using namespace std;

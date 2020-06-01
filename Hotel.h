@@ -13,11 +13,11 @@ Si se elimina el hotel se eliminan consigo sus clases de composicion
 
 using namespace std;
 
-#include "reserva.h"
-#include <Individual.h>
-#include <Doble.h>
-#include <Triple.h>
-#include <Suite.h>
+#include "Reserva.h"
+#include "Individual.h"
+#include "Doble.h"
+#include "Triple.h"
+#include "Suite.h"
 
 class Hotel
 {
@@ -47,6 +47,26 @@ public:
     Hotel();
 
     Hotel(string n, string u, int pis, int h, bool d, bool parq, bool wf); //Constructor
+    ~Hotel()
+    {
+        for(int i=0; i<cont_hab_i; i++)
+        {
+            delete habit_i[i];
+        }
+        for(int i=0; i<cont_hab_d; i++)
+        {
+            delete habit_d[i];
+        }
+        for(int i=0; i<cont_hab_t; i++)
+        {
+            delete habit_t[i];
+        }
+        for(int i=0; i<cont_hab_s; i++)
+        {
+            delete habit_s[i];
+        }
+
+    }
     string prueba();
     string get_nombre();
     string get_ubicacion();
@@ -146,11 +166,6 @@ void Hotel::muestra_hotel()
     //Desplegar habitaciones y reservas hechas con composicion dentro del hotel
     muestra_habitaciones();
     muestra_reservas();
-    //limpia heap para que no quede basura
-    delete(habit_i[50]);
-    delete(habit_d[50]);
-    delete(habit_t[50]);
-    delete(habit_s[50]);
 }
 
 // composicion que llama constructor de clase para crearla dentro de hotel

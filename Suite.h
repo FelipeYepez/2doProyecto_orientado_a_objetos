@@ -8,7 +8,7 @@ Este clase sera parte de la agregacion a hotel
 #ifndef SUITE_H
 #define SUITE_H
 
-#include <Habitaciones.h>
+#include "Habitaciones.h"
 #include <iostream>
 
 using namespace std;
