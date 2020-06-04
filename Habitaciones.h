@@ -41,7 +41,7 @@ public:
     string get_microondas();
     string get_frigobar();
     string get_escritorio();
-    virtual string arreglo() = 0; //metodo abstracto que sera sobreescrito
+    virtual string arreglo() = 0; //metodo virtual que será sobreescrito, hace a clase abstracta
 };
 //constructor vacio
 Habitaciones::Habitaciones()
