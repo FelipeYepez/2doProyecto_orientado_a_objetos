@@ -67,7 +67,6 @@ public:
         }
 
     }
-    string prueba();
     string get_nombre();
     string get_ubicacion();
     int get_pisos();
@@ -147,11 +146,6 @@ string Hotel::get_wifi()
         return resp = "Si";
     else
         return resp = "No";
-}
-string Hotel::prueba()
-{
-    string a = "Hola";
-    return a;
 }
 
 //Funcion para imprimir Hotel creado
