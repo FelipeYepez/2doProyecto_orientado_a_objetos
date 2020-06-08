@@ -36,7 +36,7 @@ private:
     string nombre;
     string ubicacion;
     int pisos;
-    int cant_habitaciones;
+    int cant_habitaciones = 0;
     bool desayuno;
     bool parqueo;
     bool wifi;
@@ -46,7 +46,7 @@ private:
 public:
     Hotel();
 
-    Hotel(string n, string u, int pis, int h, bool d, bool parq, bool wf); //Constructor
+    Hotel(string n, string u, int pis, bool d, bool parq, bool wf); //Constructor
     ~Hotel()
     {
         for(int i=0; i<cont_hab_i; i++)
@@ -75,12 +75,12 @@ public:
     string get_desayuno();
     string get_parqueo();
     string get_wifi();
-    void muestra_hotel();
+    string muestra_hotel();
     void muestra_reservas();
     void muestra_habitaciones();
     void agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc);  //sobrecarga
-    void agrega_habitacion_dob(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal);
-    void agrega_habitacion_triple(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal);
+    void agrega_habitacion(string cam, int num, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal);
+    void agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal);
     void agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal, bool sal, bool com);  //sobrecarga
     void agrega_reserva(string nom, int a, int n, string fi, string fs, string tipohabres);
 };
@@ -90,13 +90,11 @@ Hotel::Hotel()
 
 }
 //constructor hotel
-Hotel::Hotel(string n, string u, int pis, int h, bool d, bool parq, bool wf)
+Hotel::Hotel(string n, string u, int pis, bool d, bool parq, bool wf)
 {
-
     nombre = n;
     ubicacion= u;
     pisos = pis;
-    cant_habitaciones = h;
     desayuno = d;//metodo para saber si cuenta o no con balcon
     parqueo = parq;
     wifi = wf;
@@ -117,6 +115,7 @@ int Hotel::get_pisos()
 {
     return pisos;
 }
+
 
 int Hotel::get_canthabitaciones()
 {
@@ -156,16 +155,13 @@ string Hotel::prueba()
 }
 
 //Funcion para imprimir Hotel creado
-void Hotel::muestra_hotel()
+string Hotel::muestra_hotel()
 {
     stringstream h;
-    h    << nombre << "\n Ubicacion: " << ubicacion << "\n Numero de pisos: " << pisos
+    h    << "Nombre: " << nombre << "\n Ubicacion: " << ubicacion << "\n Numero de pisos: " << pisos
          << "\n Numero de habitaciones: " << cant_habitaciones << "\n Cuenta con desayuno: " <<  get_desayuno()
          << "\n Cuenta con parqueo: " <<  get_parqueo() << "\n Cuenta con wi-fi: " <<  get_wifi() <<  "\n" <<  "\n";
-    cout << h.str();
-    //Desplegar habitaciones y reservas hechas con composicion dentro del hotel
-    muestra_habitaciones();
-    muestra_reservas();
+    return h.str();
 }
 
 // composicion que llama constructor de clase para crearla dentro de hotel
@@ -173,24 +169,28 @@ void Hotel::agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, b
 {
     habit_i[cont_hab_i] = new Individual(num, cam, cn, tv, cf, micro, frigo, esc);
     cont_hab_i += 1;
+    cant_habitaciones += 1;
 }
 // composicion que llama constructor de clase para crearla dentro de hotel
-void Hotel::agrega_habitacion_dob(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal)
+void Hotel::agrega_habitacion(string cam, int num, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal)
 {
     habit_d[cont_hab_d] = new Doble(num, cam, cn, tv, cf, micro, frigo, esc, bal);
     cont_hab_d += 1;
+    cant_habitaciones += 1;
 }
 // composicion que llama constructor de clase para crearla dentro de hotel
-void Hotel::agrega_habitacion_triple(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal)
+void Hotel::agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal)
 {
     habit_t[cont_hab_t] = new Triple(num, cam, cn, tv, cf, micro, frigo, esc, bal);
     cont_hab_t += 1;
+    cant_habitaciones += 1;
 }
 // composicion que llama constructor de clase para crearla dentro de hotel
 void Hotel::agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal, bool sal, bool com)
 {
     habit_s[cont_hab_s] = new Suite(num, cam, cn, tv, cf, micro, frigo, esc, bal, sal, com);
     cont_hab_s += 1;
+    cant_habitaciones += 1;
 }
 // composicion que llama constructor de clase para crearla dentro de hotel
 void Hotel::agrega_reserva(string nom, int a, int n, string fi, string fs, string tipohabres)
@@ -203,7 +203,9 @@ void Hotel::agrega_reserva(string nom, int a, int n, string fi, string fs, strin
 //funcion que permite desplegar las reservas creadas a traves de composicion
 void Hotel::muestra_reservas()
 {
-    cout << "\n \n" << "\t\t" << "RESERVAS: \n";
+    if (cont_res == 0){
+        cout << "El Hotel no cuenta con reservas creadas hasta el momento";
+    }
     for(int i=0; i<cont_res; i++)
     {
         cout << "\t\t" << reser[i].arreglo();
@@ -213,12 +215,12 @@ void Hotel::muestra_reservas()
 //funcion que permite desplegar las habitaciones creadas a traves de composicion
 void Hotel::muestra_habitaciones()
 {
-
+    if (cant_habitaciones == 0){
+        cout << "El Hotel no cuenta con habitaciones creadas hasta el momento";
+    }
     if (cont_hab_i > 0)
     {
         cout << "\n \n" << "\t\t" << "HABITACIONES INDIVIDUALES: \n";
-        //Habitaciones * hab = new Individual();
-        //arreglo = hab -> arreglo();
         for(int i=0; i<cont_hab_i; i++)
         {
             cout << "\t\t" << habit_i[i] -> arreglo(); //aplicacion de polimorfismo con apuntadores
