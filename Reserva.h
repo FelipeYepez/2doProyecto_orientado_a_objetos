@@ -1,10 +1,12 @@
 /*
-Felipe Yepez A01658002
-Crea la clase Reserva con sus respectivos getters para poder acceder
-a los atributos privados, crea funciones void para poder llevar cuenta de las
-reservas que va a tener el hotel
-Clase de composicion a Hotel
-*/
+ *
+ * Felipe Yepez A01658002
+ * Crea la clase Reserva con sus respectivos getters para poder acceder
+ * a los atributos privados, crea funciones void para poder llevar cuenta de las
+ * reservas que va a tener el hotel
+ * Clase de composicion a Hotel
+ *
+ */
 
 #ifndef RESERVA_H
 #define RESERVA_H
@@ -89,6 +91,12 @@ string Reserva::get_tipo_habitacion_r()
     return  tipo_habitacion_reserva;
 }
 
+/**
+ * arreglo junta atributos con descripcion de reserva
+ *
+ * @param
+ * @return string con la información concatenada
+ */
 //funcion que permite arreglo de reservas para posteriormente almacenar y desplegar cuando sea necesario
 string Reserva::arreglo()
 {
