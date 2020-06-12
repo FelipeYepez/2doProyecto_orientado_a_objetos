@@ -1,9 +1,11 @@
 /*
-Felipe Yepez A01658002
-Crea la clase Triple que es una de las herencias de habitaciones con su respectivo constructor
-que lleva valores default del constructor principal de habitacion
-Este clase sera parte de la agregacion a hotel
-*/
+ *
+ * Felipe Yepez A01658002
+ * Crea la clase Triple que es una de las herencias de habitaciones con su respectivo constructor
+ * que lleva valores default del constructor principal de habitacion
+ * Este clase sera parte de la agregacion a hotel
+ *
+ */
 
 #ifndef TRIPLE_H
 #define TRIPLE_H
@@ -29,6 +31,7 @@ public:
     string get_balcon();
     string arreglo();
 };
+
 //metodo para saber si cuenta o no con balcon
 string Triple::get_balcon()
 {
@@ -40,6 +43,13 @@ string Triple::get_balcon()
     else
         return resp = "No";
 }
+
+/**
+ * arreglo junta atributos con descripcion
+ *
+ * @param
+ * @return string con la información concatenada
+ */
 string Triple::arreglo()
 {
     stringstream hab;
