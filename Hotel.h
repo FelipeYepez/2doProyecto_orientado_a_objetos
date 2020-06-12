@@ -1,10 +1,12 @@
 /*
-Felipe Yepez A01658002
-Crea la clase Hotel con sus respectivos getters para poder acceder
-a los atributos privados, crea funciones void para poder implementar la composicion
-de las clases habitaciones y reservas para posteriormente poder desplegarlas y ver el
-registro que se lleva dentro del hotel
-Si se elimina el hotel se eliminan consigo sus clases de composicion
+*
+* Felipe Yepez A01658002
+* Crea la clase Hotel con sus respectivos getters para poder acceder
+* a los atributos privados, crea funciones void para poder implementar la composicion
+* de las clases habitaciones y reservas para posteriormente poder desplegarlas y ver el
+* registro que se lleva dentro del hotel
+* Si se elimina el hotel se eliminan consigo sus clases de composicion
+*
 */
 
 #ifndef HOTEL_H
@@ -148,7 +150,12 @@ string Hotel::get_wifi()
         return resp = "No";
 }
 
-//Funcion para imprimir Hotel creado
+/**
+ * muestra_hotel junta atributos de hotel con descripcion
+ *
+ * @param
+ * @return string con la información concatenada
+ */
 string Hotel::muestra_hotel()
 {
     stringstream h;
@@ -158,43 +165,102 @@ string Hotel::muestra_hotel()
     return h.str();
 }
 
-// composicion que llama constructor de clase para crearla dentro de hotel
+/**
+ * agrega_habitacion genera y guarda habitacion individual
+ *
+ * genera objeto de tipo Habitacion Individual y los
+ * guarda en el arreglo habit_i[] (arreglo de habitaciones)
+ * composicion que llama constructor de clase para crearla dentro de hotel
+ *
+ * @param todos los parametros para crear habitacion individual
+ * @return
+ */
 void Hotel::agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc)
 {
     habit_i[cont_hab_i] = new Individual(num, cam, cn, tv, cf, micro, frigo, esc);
     cont_hab_i += 1;
     cant_habitaciones += 1;
 }
-// composicion que llama constructor de clase para crearla dentro de hotel
+
+
+/**
+ * agrega_habitacion genera y guarda habitacion doble
+ *
+ * genera objeto de tipo Habitacion Doble y los
+ * guarda en el arreglo habit_d[] (arreglo de habitaciones)
+ * composicion que llama constructor de clase para crearla dentro de hotel
+ *
+ * @param todos los parametros para crear habitacion doble
+ * @return
+ */
 void Hotel::agrega_habitacion(string cam, int num, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal)
 {
     habit_d[cont_hab_d] = new Doble(num, cam, cn, tv, cf, micro, frigo, esc, bal);
     cont_hab_d += 1;
     cant_habitaciones += 1;
 }
-// composicion que llama constructor de clase para crearla dentro de hotel
+
+/**
+ * agrega_habitacion genera y guarda habitacion triple
+ *
+ * genera objeto de tipo Habitacion Triple y los
+ * guarda en el arreglo habit_t[] (arreglo de habitaciones)
+ * composicion que llama constructor de clase para crearla dentro de hotel
+ *
+ * @param todos los parametros para crear habitacion triple
+ * @return
+ */
 void Hotel::agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal)
 {
     habit_t[cont_hab_t] = new Triple(num, cam, cn, tv, cf, micro, frigo, esc, bal);
     cont_hab_t += 1;
     cant_habitaciones += 1;
 }
-// composicion que llama constructor de clase para crearla dentro de hotel
+
+/**
+ * agrega_habitacion genera y guarda habitacion Suite
+ *
+ * genera objeto de tipo Habitacion Suite y los
+ * guarda en el arreglo habit_s[] (arreglo de habitaciones)
+ * composicion que llama constructor de clase para crearla dentro de hotel
+ *
+ * @param todos los parametros para crear habitacion suite
+ * @return
+ */
 void Hotel::agrega_habitacion(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc, bool bal, bool sal, bool com)
 {
     habit_s[cont_hab_s] = new Suite(num, cam, cn, tv, cf, micro, frigo, esc, bal, sal, com);
     cont_hab_s += 1;
     cant_habitaciones += 1;
 }
-// composicion que llama constructor de clase para crearla dentro de hotel
+
+/**
+ * agrega_reserva genera y guarda reservas
+ *
+ * genera objeto de tipo Reserva y los
+ * guarda en el arreglo reser (arreglo de reserva)
+ * composicion que llama constructor de clase para crearla dentro de hotel
+ *
+ * @param todos los parametros para crear reserva
+ * @return
+ */
 void Hotel::agrega_reserva(string nom, int a, int n, string fi, string fs, string tipohabres)
 {
     Reserva reserv(nom, a, n, fi, fs, tipohabres);
     reser[cont_res] = reserv;
     cont_res += 1;
 }
-//Ciclo que recorre el arreglo e imprime cada objeto.
-//funcion que permite desplegar las reservas creadas a traves de composicion
+
+
+/**
+ * muestra_reservas verifica si existen reservas para desplegarlas
+ *
+ * Ciclo que recorre el arreglo e imprime cada reserva con su informacion concatenada.
+ * funcion que permite desplegar las reservas creadas a traves de composicion
+ *
+ * @param 
+ * @return
+ */
 void Hotel::muestra_reservas()
 {
     if (cont_res == 0){
@@ -205,8 +271,17 @@ void Hotel::muestra_reservas()
         cout << "\t\t" << reser[i].arreglo();
     }
 }
-//Ciclo que recorre el arreglo e imprime cada objeto.
-//funcion que permite desplegar las habitaciones creadas a traves de composicion
+
+/**
+ * muestra_habitaciones verifica si existen habitaciones para desplegarlas
+ *
+ * Ciclo que recorre cada arreglo de habitaciones e imprime cada habitacion con su 
+ * informacion concatenada mediante polimorfismo.
+ * funcion que permite desplegar las habitaciones creadas a traves de composicion
+ *
+ * @param 
+ * @return
+ */
 void Hotel::muestra_habitaciones()
 {
     if (cant_habitaciones == 0){
