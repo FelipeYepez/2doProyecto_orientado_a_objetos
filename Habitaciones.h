@@ -1,9 +1,11 @@
 /*
-Felipe Yepez A01658002
-Crea la clase Habitaciones con sus respectivos getters para poder acceder
-a los atributos privados, crea funciones void para poder llevar cuenta de las
-habitaciones existentes en el hotel
-Clase de composicion a Hotel y clase padre que dar[a herencia a 4 clases mas
+*
+* Felipe Yepez A01658002
+* Crea la clase Habitaciones con sus respectivos getters para poder acceder
+* a los atributos privados, crea funciones void para poder llevar cuenta de las
+* habitaciones existentes en el hotel
+* Clase de composicion a Hotel y clase padre que dar[a herencia a 4 clases mas
+*
 */
 
 #ifndef HABITACIONES_H
@@ -28,7 +30,6 @@ protected:
     bool escritorio;
 
 //metodos publicos
-// solo setter para precio que es variable, habitacion no cambia
 public:
     Habitaciones(); //constructor
     Habitaciones(int num, string cam, float cn, bool tv, bool cf, bool micro, bool frigo, bool esc);
@@ -126,7 +127,15 @@ string Habitaciones::get_escritorio()
     else
         return resp = "No";
 }
-//funcion que permite almacenar las distintas habitaciones que se van haciendo para poder desplegarlas
+
+
+/**
+ * arreglo junta atributos con descripcion para almacenar las distintas habitaciones 
+ * que se van crenaod para poder desplegarlas
+ *
+ * @param
+ * @return string con la información concatenada
+ */
 string Habitaciones::arreglo()
 {
     stringstream hab;
