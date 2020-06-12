@@ -1,10 +1,10 @@
 /*
-*
-* Felipe Yepez A01658002
-* Crea la clase Doble que es una de las herencias de habitaciones con su respectivo constructor
-* que lleva valores default del constructor principal de habitacion
-* Este clase sera parte de la agregacion a hotel
-*/
+ *
+ * Felipe Yepez A01658002
+ * Crea la clase Doble que es una de las herencias de habitaciones con su respectivo constructor
+ * que lleva valores default del constructor principal de habitacion
+ * Este clase sera parte de la agregacion a hotel
+ */
 
 #ifndef DOBLE_H
 #define DOBLE_H
