@@ -1,12 +1,12 @@
 /*
-*
-* Felipe Yepez A01658002
-* Crea la clase Habitaciones con sus respectivos getters para poder acceder
-* a los atributos privados, crea funciones void para poder llevar cuenta de las
-* habitaciones existentes en el hotel
-* Clase de composicion a Hotel y clase padre que dar[a herencia a 4 clases mas
-*
-*/
+ *
+ * Felipe Yepez A01658002
+ * Crea la clase Habitaciones con sus respectivos getters para poder acceder
+ * a los atributos privados, crea funciones void para poder llevar cuenta de las
+ * habitaciones existentes en el hotel
+ * Clase de composicion a Hotel y clase padre que dar[a herencia a 4 clases mas
+ *
+ */
 
 #ifndef HABITACIONES_H
 #define HABITACIONES_H
