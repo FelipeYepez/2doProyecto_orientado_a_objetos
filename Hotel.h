@@ -1,13 +1,13 @@
 /*
-*
-* Felipe Yepez A01658002
-* Crea la clase Hotel con sus respectivos getters para poder acceder
-* a los atributos privados, crea funciones void para poder implementar la composicion
-* de las clases habitaciones y reservas para posteriormente poder desplegarlas y ver el
-* registro que se lleva dentro del hotel
-* Si se elimina el hotel se eliminan consigo sus clases de composicion
-*
-*/
+ *
+ * Felipe Yepez A01658002
+ * Crea la clase Hotel con sus respectivos getters para poder acceder
+ * a los atributos privados, crea funciones void para poder implementar la composicion
+ * de las clases habitaciones y reservas para posteriormente poder desplegarlas y ver el
+ * registro que se lleva dentro del hotel
+ * Si se elimina el hotel se eliminan consigo sus clases de composicion
+ *
+ */
 
 #ifndef HOTEL_H
 #define HOTEL_H
