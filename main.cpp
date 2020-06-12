@@ -1,22 +1,31 @@
 /*
-Felipe Yepez A01658002
+ *
+ * Felipe Yepez A01658002
+ *
+ * Programa que permite crear hoteles con diferentes tipos de habitaciones
+ * a traves de heredacion y composicion, se pueden generar reservas para
+ * poder manejar adecuadamente el hotel.
+ *
+ */
 
-Programa que permite crear hoteles con diferentes tipos de habitaciones
-a traves de heredacion y composicion, se pueden generar reservas para
-poder manejar adecuadamente el hotel.
-
-*/
-
+#include <string.h>
+#include <cstdlib>
 #include <iostream>
 #include "Programa.h"
 #include "Hotel.h"
 #include "Habitaciones.h"
 #include "Reserva.h"
-#include <string.h>
 
 using namespace std;
 
 bool comprueba_bool(string a);
+
+/**
+ * comprueba_bool verifica respuestas de usuario 
+ *
+ * @param
+ * @return bool para saber si el usuario respondio si o no
+ */
 bool comprueba_bool(string a)
 {
     if (a == "S" || a == "s")
