@@ -61,6 +61,7 @@ void Programa::muestra_nombres_hoteles()
 }
 bool Programa::comprobar_hotel(int hotel_n)
 {
+    hotel_n = hotel_n - 1;
     if (hoteles[hotel_n].get_nombre() == "")
     {
         return false;
